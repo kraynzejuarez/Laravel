@@ -10,7 +10,18 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('/', function(){
+    return view('Welcome');
+});
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+
+
+Route::group(['middleware' => ['web']], function (){
+    Route::post('/signup', [
+        'uses' => 'UserController@postSignUp',
+        'as' => 'signup'
+        ]);
+
 });
